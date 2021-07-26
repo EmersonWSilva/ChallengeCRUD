@@ -20,4 +20,4 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 
 9- Criação da view "form" (usado para cadastro e edição)
 
-10- Criação das views New e edit (ambas renderizam o form)
+10- Criação das views New e Edit (ambas renderizam o form)
