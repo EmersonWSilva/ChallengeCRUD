@@ -1,0 +1,25 @@
+<%= simple_form_for (@citizen) do |f| %>
+  <%= f.input :full_name, label: 'Nome completo:', input_html: { class:'form-control form-control-sm' } %>
+  <%= f.input :cpf, label: 'CPF:', placeholder:"XXX.XXX.XXX-XX", input_html: { class:'form-control form-control-sm' } %>
+  <%= f.input :cns, label: 'CNS:', placeholder:"XXX XXXX XXXX XXXX", input_html: { class:'form-control form-control-sm' } %>
+  <%= f.input :email, label: 'E-mail:', input_html: { class:'form-control form-control-sm' } %>
+  <%= f.input :birthdate, start_year: Date.today.year - 110, end_year: Date.today.year, label: 'Data de nascimento:', input_html: { class:'form-control form-control-sm' } %>
+  <%= f.input :phone, label: 'Telefone:', placeholder:"(XX) XXXXX-XXXX", input_html: { class:'form-control form-control-sm' } %>
+  <%= f.input :status, 
+        :as => :select, 
+        :collection => [['Inativo',false],['Ativo',true]], 
+        :include_blank => false, 
+        :label => "Status:" %>
+    <%= f.fields_for(:addresses, @citizen.address) do |address_f| %>
+        <%= address_f.input :zip, label: "CEP ", input_html: { class:'form-control form-control-sm' } %>
+        <%= address_f.input :address_line1, label: "Endereço: ", input_html: { class:'form-control form-control-sm' } %>
+        <%= address_f.input :address_line2, label: "Complemento: ", input_html: { class:'form-control form-control-sm' } %>
+        <%= address_f.input :district, label: "Bairro: ", input_html: { class:'form-control form-control-sm' } %>
+        <%= address_f.input :city, label: "Cidade: ", input_html: { class:'form-control form-control-sm' } %>
+        <%= address_f.input :state, label: "Estado: ", input_html: { class:'form-control form-control-sm' } %> 
+        <%= address_f.input :ibge, label: "Codigo IBGE: ", input_html: { class:'form-control form-control-sm' } %>                
+    <% end %>
+ 
+  <%= f.button :submit, 'CADASTRE AGORA', class:"btn btn-primary" %>
+<% end %>
+
